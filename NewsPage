@@ -1,0 +1,20 @@
+Class NewsPage
+
+def goto
+ @driver.get('https://academymortgage.com/news/all-news')
+end
+
+def select_news_dropdown(option)
+ el = @driver.find_element("//span[text()='#{option}']")
+ list = Selenium::WebDriver::Select.new(el)
+ list.select_by(:text, option)
+end
+
+// All News Section
+def get_ceo_info
+  var = driver.find_elements(xpath: “//div[@class='white-segment']//h3[@class='news-title'][contains(text(),'Mac Pherson')]”)
+  var.any? ? true : false
+end 
+
+
+end
