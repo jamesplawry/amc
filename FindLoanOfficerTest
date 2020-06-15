@@ -1,0 +1,17 @@
+Class FindLoanOfficerTest
+
+def test_find_loan_officer
+  name = 'Matt Keyes'
+  number = '398768'
+  
+  assert_array = []
+  
+  FindLoanOfficerPage.goto
+  
+  FindLoanOfficerPage.find_officer_by_zip('84005', '25')
+  assert_array << "Matt is not listed" if !FindLoanOfficerPage.loan_officer_listed?('Matt Keyes')
+  assert_array << "Incorrect NMLS number" if !FindLoanOfficerPage.get_officer_nmls_number(‘Matt Keyes’) != ‘398768’
+  
+  assert(assert_array.emtpy?, assert_array)
+
+end
