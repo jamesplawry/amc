@@ -1,0 +1,23 @@
+require 'webdrivers'
+
+module WebHelper
+ extend self
+ 
+ def chrome
+  capabilities = ###list desired capabilities here###
+  options = Selenium::WebDriver::Chrome::Options.new(options: capabilities)
+  @driver = initialize_chrome_browser(options: capabilities)
+ end
+ 
+ def firefox
+  @driver = Selenium::Webdriver.for :firefox
+ end
+ 
+ 
+ 
+ private
+ def initialize_chrome_browser(capabilities
+  client = Selenium::Webdriver:Remove:HTTP::Default.new(read_timeout: 120)
+  @driver = Selenium::Webdriver.for :chrome, options: capabilities, http_client: client
+ end
+  
