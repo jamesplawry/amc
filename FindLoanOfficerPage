@@ -1,0 +1,30 @@
+class FindLoanOfficer
+
+def click_find_a_loan_officer
+ @driver.find_element(xpath: “//span[text()='Find a Loan Officer']”).click
+end
+
+def click_search_button
+ @driver.find_element(id: "searchBtn")
+end
+
+def find_officer_by_zip(zip, search_radius)
+ text_box = @driver.find_element(id: “Zip)
+ miles = @driver.find_element(id: “Radius”)
+ select_list = Selenium::WebDriver::Support.Select.new(miles)
+ text_box.send_keys(zip)
+ select_list.select_by(:text, search_radius)
+end
+
+def loan_officer_listed?(officer_name)
+  list = @river.find_elements(xpath: “//div[@class='name-title-div']/h3[@class='name']”).map!(&:text)
+  list.include?(officer_name) ? true : false
+end
+
+def get_officer_nmls_number(officer_name)
+  number = Driver.find_element(xpath: “//div[@class='name-title-div']/h3[normalize- space()=#{officer_name}]/following-sibling::span”)
+  result = Number.split(‘#’)[1]
+end
+
+
+end
