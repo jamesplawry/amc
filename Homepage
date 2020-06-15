@@ -1,0 +1,7 @@
+Class HomePage
+
+def goto
+ @driver.get('https://academymortgage.com/)
+end
+
+end
